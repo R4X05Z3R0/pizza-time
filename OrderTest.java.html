@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>OrderTest.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+OrderTest.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">junit</span><span class="s2">.</span><span class="s1">jupiter</span><span class="s2">.</span><span class="s1">api</span><span class="s2">.</span><span class="s1">Test</span><span class="s2">;</span>
+
+<span class="s0">import static </span><span class="s1">org</span><span class="s2">.</span><span class="s1">junit</span><span class="s2">.</span><span class="s1">jupiter</span><span class="s2">.</span><span class="s1">api</span><span class="s2">.</span><span class="s1">Assertions</span><span class="s2">.*;</span>
+
+<span class="s0">class </span><span class="s1">OrderTest </span><span class="s2">{</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">void </span><span class="s1">addLine</span><span class="s2">() {</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">void </span><span class="s1">getTotal</span><span class="s2">() {</span>
+        <span class="s1">Pizza cheese </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Pizza</span><span class="s2">(</span><span class="s3">&quot;Cheese&quot;</span><span class="s2">, </span><span class="s4">1</span><span class="s2">, </span><span class="s4">5.0</span><span class="s2">,</span><span class="s3">&quot;Cheese and Soap&quot;</span><span class="s2">);</span>
+        <span class="s1">Pizza kebab </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Pizza</span><span class="s2">(</span><span class="s3">&quot;Kebab&quot; </span><span class="s2">, </span><span class="s4">2 </span><span class="s2">, </span><span class="s4">4.0 </span><span class="s2">, </span><span class="s3">&quot;Kebab and Matcha&quot;</span><span class="s2">);</span>
+        <span class="s1">Order order </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Order</span><span class="s2">();</span>
+        <span class="s1">order</span><span class="s2">.</span><span class="s1">addLine</span><span class="s2">(</span><span class="s1">cheese</span><span class="s2">,</span><span class="s4">2</span><span class="s2">);</span>
+        <span class="s1">order</span><span class="s2">.</span><span class="s1">addLine</span><span class="s2">(</span><span class="s1">kebab</span><span class="s2">, </span><span class="s4">2</span><span class="s2">);</span>
+        <span class="s0">double </span><span class="s1">expected </span><span class="s2">= </span><span class="s4">18.00</span><span class="s2">;</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s1">expected</span><span class="s2">, </span><span class="s1">order</span><span class="s2">.</span><span class="s1">getTotal</span><span class="s2">());</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">void </span><span class="s1">testToString</span><span class="s2">() {</span>
+        <span class="s1">Pizza cheese </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Pizza</span><span class="s2">(</span><span class="s3">&quot;Cheese&quot;</span><span class="s2">, </span><span class="s4">1</span><span class="s2">, </span><span class="s4">5.0</span><span class="s2">,</span><span class="s3">&quot;Cheese and Soap&quot;</span><span class="s2">);</span>
+        <span class="s1">Pizza kebab </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Pizza</span><span class="s2">(</span><span class="s3">&quot;Kebab&quot; </span><span class="s2">, </span><span class="s4">2 </span><span class="s2">, </span><span class="s4">4.0 </span><span class="s2">, </span><span class="s3">&quot;Kebab and Matcha&quot;</span><span class="s2">);</span>
+        <span class="s1">Order order </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Order</span><span class="s2">();</span>
+        <span class="s1">order</span><span class="s2">.</span><span class="s1">addLine</span><span class="s2">(</span><span class="s1">cheese</span><span class="s2">, </span><span class="s4">2</span><span class="s2">);</span>
+        <span class="s1">order</span><span class="s2">.</span><span class="s1">addLine</span><span class="s2">(</span><span class="s1">kebab</span><span class="s2">, </span><span class="s4">2</span><span class="s2">);</span>
+
+        <span class="s1">String expected </span><span class="s2">= </span><span class="s3">&quot;&quot;&quot; 
+                2 x Cheese : 10.00kr 
+                2 x Kebab : 8.00kr 
+                ----------------- 
+                Total: 18.00kr&quot;&quot;&quot;</span><span class="s2">;</span>
+
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s1">expected</span><span class="s2">, </span><span class="s1">order</span><span class="s2">.</span><span class="s1">toString</span><span class="s2">());</span>
+    <span class="s2">}</span>
+<span class="s2">}</span></pre>
+</body>
+</html>
