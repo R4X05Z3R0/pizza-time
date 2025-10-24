@@ -4,6 +4,9 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         Menu menu = new Menu();
+        PizzaBar pizzaBar = new PizzaBar(menu);
+
+        int orderCount = 0;
 
         while (true) {
             mainMenu();
@@ -18,11 +21,12 @@ public class Main {
                         System.out.println("Select Pizza: ");
                         int id = input.nextInt();
                         Pizza selectedPizza = menu.findPizzaByID(id); // Searches through list for Pizza
-                        System.out.println("You selected: " + selectedPizza);
+                        System.out.println("You selected:\n" + selectedPizza + "\n");
                         System.out.println("Insert Amount: ");
                         int amount = input.nextInt();
                         order.addLine(selectedPizza, amount);
-                        System.out.println("You selected: " + order);
+                        System.out.println("You selected:\n" + order);
+
 
 
                         System.out.println("Continue Order?");
@@ -40,14 +44,19 @@ public class Main {
                     String cNumber = input.next();
 
                     Customer customer = new Customer(cName, cNumber);
-                    System.out.println("\nOrder Overview:\n" + order
-                            + "\nTo " + customer.getName() +
-                            ", Phone Number: " + customer.getPhoneNumber());
+
+                    orderCount++;
+
+                    OrderOverview overview = new OrderOverview(customer, order, orderCount);
+                    pizzaBar.addOrder(overview);
+                    overview.displayOverview();
+
 
                     //Create funtion that takes order and customer name to array of completed orders
                     break;
                 case 2:
                     //Order List
+                    pizzaBar.displayOrder();
                     break;
                 case 3:
                     //History

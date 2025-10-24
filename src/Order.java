@@ -20,6 +20,10 @@ public class Order {
         return sum;
     }
 
+    public ArrayList<OrderLine> getLines() {
+        return lines;
+    }
+
     @Override
     public String toString() {
         String receipt = "";
