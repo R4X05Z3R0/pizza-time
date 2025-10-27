@@ -78,6 +78,23 @@ public class Main {
                     pizzaBar.displayCompletedOrders();
                     break;
                 case 4:
+                    //Admin
+                    adminMenu();
+                    int option2 = input.nextInt();
+                    switch (option2){
+                        case 1:
+                        //Change Price
+                            break;
+                        case 2:
+                        //Set Customer
+                            break;
+                        case 3:
+                            //Go back to main menu
+                            System.out.println();
+                            break;
+                    }
+                    break;
+                case 5:
                     //Exit
                     System.out.println("Ending Program...");
                     input.close();
@@ -90,8 +107,15 @@ public class Main {
         }
     }
 
+    private static void adminMenu() {
+        System.out.println("\nSelect An Option:");
+        System.out.println("1. CHANGE PRICE");
+        System.out.println("2. ADD FAVORITE CUSTOMERS");
+        System.out.println("3. MAIN MENU");
+    }
+
     private static void subMenu() {
-        System.out.println("Select An Option:");
+        System.out.println("\nSelect An Option:");
         System.out.println("1. Ready Order");
         System.out.println("2. Go Back To Main Menu");
     }
@@ -101,6 +125,7 @@ public class Main {
         System.out.println("1. Order");
         System.out.println("2. Order List");
         System.out.println("3. History");
-        System.out.println("4. Exit");
+        System.out.println("4. ADMIN");
+        System.out.println("5. Exit");
     }
 }
