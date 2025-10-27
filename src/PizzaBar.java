@@ -11,6 +11,7 @@ public class PizzaBar {
     public PizzaBar(Menu menu) {
         this.orders = new ArrayList<>();
         this.completedOrders = new ArrayList<>();
+        this.customers = new ArrayList<>();
         this.menu = menu;
     }
 
@@ -75,4 +76,13 @@ public class PizzaBar {
         return customers;
     }
 
+    public void displayCustomers(){
+        for(Customer people : getCustomers()){
+            System.out.println(people);
+        }
+    }
+
+    public void addCustomer(String name, String number) {
+        customers.add(new Customer(name,number));
+    }
 }

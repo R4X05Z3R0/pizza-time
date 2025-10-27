@@ -84,23 +84,22 @@ public class Main {
                     switch (option2){
                         case 1:
                         //Change Price
-                            System.out.println("Select pizza by ID:");
-                            int pizzaID = input.nextInt();
-                            Pizza a = menu.findPizzaByID(pizzaID);
-                            double oldPrice = a.getPrice();
-                            System.out.println("You selected " + a.getName()
-                            + " - " + a.getPrice() + "kr");
-
-                            System.out.println("Enter new amount: ");
-                            double newAmount = input.nextDouble();
-                            a.setPrice(newAmount);
-
-                            System.out.printf("%s : Old Price - %.2fkr , New Price - %.2fkr%n", a.getName(), oldPrice, a.getPrice());
+                            changePrice(input, menu);
                             break;
                         case 2:
                         //Set Customer
+                            System.out.println("Enter Customer Name:");
+                            String name = input.nextLine();
+                            System.out.println("Enter Customer Number:");
+                            String number = input.nextLine();
+                            pizzaBar.addCustomer(name, number);
                             break;
                         case 3:
+                            //Display List of Customers
+                            System.out.println("-----List Of Customers------");
+                            pizzaBar.displayCustomers();
+                            break;
+                        case 4:
                             //Go back to main menu
                             System.out.println();
                             break;
@@ -119,11 +118,28 @@ public class Main {
         }
     }
 
+    private static void changePrice(Scanner input, Menu menu) {
+        System.out.println("Select pizza by ID:");
+        int pizzaID = input.nextInt();
+        Pizza a = menu.findPizzaByID(pizzaID);
+        double oldPrice = a.getPrice();
+        System.out.println("You selected " + a.getName()
+        + " - " + a.getPrice() + "kr");
+
+        System.out.println("Enter new amount: ");
+        double newAmount = input.nextDouble();
+        a.setPrice(newAmount);
+
+        System.out.printf("%s : Old Price - %.2fkr , New Price - %.2fkr%n", a.getName(), oldPrice, a.getPrice());
+        return;
+    }
+
     private static void adminMenu() {
         System.out.println("\nSelect An Option:");
         System.out.println("1. CHANGE PRICE");
         System.out.println("2. ADD FAVORITE CUSTOMERS");
-        System.out.println("3. MAIN MENU");
+        System.out.println("3. DISPLAY CUSTOMERS");
+        System.out.println("4. MAIN MENU");
     }
 
     private static void subMenu() {
