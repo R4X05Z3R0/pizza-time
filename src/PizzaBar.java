@@ -53,15 +53,22 @@ public class PizzaBar {
         System.out.println("\nORDER (" + a.getId() + "): READY");
     }
 
-    public void displayOrder(){
+    public boolean displayOrder() {
         System.out.println("------ALL ORDERS-----");
+        boolean found = false;
+
         for (OrderOverview order : orders) {
-            if (order != null) {
+            if (!order.isCompleted()) {
                 order.displayOrder();
-            } else {
-                System.out.println("No Orders Yet");
+                found = true;
             }
         }
+
+        if (!found) {
+            System.out.println("No Current Orders");
+        }
+
+        return found;
     }
 
     public ArrayList<Customer> getCustomers(){
