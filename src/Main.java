@@ -52,14 +52,30 @@ public class Main {
                     overview.displayOverview();
 
 
-                    //Create funtion that takes order and customer name to array of completed orders
+                    //Create function that takes order and customer name to array of completed orders
                     break;
                 case 2:
                     //Order List
                     pizzaBar.displayOrder();
+                    subMenu();
+                    int option1 = input.nextInt();
+                    switch (option1){
+                        case 1:
+                            System.out.println("Select Order To Ready:");
+                            int orderID = input.nextInt();
+                            pizzaBar.setReady(orderID);
+                            //Function that sets order to ready and deletes it from list
+                            break;
+                        case 2:
+                            //Go back to Main Menu
+                            System.out.println();
+                            break;
+                    }
                     break;
                 case 3:
                     //History
+                    System.out.println("\nCOMPLETED ORDERS:");
+                    pizzaBar.displayCompletedOrders();
                     break;
                 case 4:
                     //Exit
@@ -72,6 +88,12 @@ public class Main {
 
             }
         }
+    }
+
+    private static void subMenu() {
+        System.out.println("Select An Option:");
+        System.out.println("1. Ready Order");
+        System.out.println("2. Go Back To Main Menu");
     }
 
     private static void mainMenu() {

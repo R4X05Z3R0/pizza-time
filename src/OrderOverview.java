@@ -8,6 +8,7 @@ public class OrderOverview {
     DateTimeFormatter formatter;
     String orderTime ;
     int id;
+    boolean completed;
 
     public OrderOverview(Customer customer, Order order, int id){
         this.customer = customer;
@@ -16,6 +17,7 @@ public class OrderOverview {
         this.formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy : HH.mm");
         this.orderTime = now.format(formatter);
         this.id = id;
+        this.completed = false;
     }
 
     public void displayOverview(){
@@ -38,6 +40,16 @@ public class OrderOverview {
 
     public int getId() {
         return id;
+    }
+
+
+
+    public boolean isCompleted(){
+        return completed;
+    }
+
+    public void setCompleted() {
+        this.completed = true;
     }
 
     @Override
