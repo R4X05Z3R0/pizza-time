@@ -84,6 +84,18 @@ public class Main {
                     switch (option2){
                         case 1:
                         //Change Price
+                            System.out.println("Select pizza by ID:");
+                            int pizzaID = input.nextInt();
+                            Pizza a = menu.findPizzaByID(pizzaID);
+                            double oldPrice = a.getPrice();
+                            System.out.println("You selected " + a.getName()
+                            + " - " + a.getPrice() + "kr");
+
+                            System.out.println("Enter new amount: ");
+                            double newAmount = input.nextDouble();
+                            a.setPrice(newAmount);
+
+                            System.out.printf("%s : Old Price - %.2fkr , New Price - %.2fkr%n", a.getName(), oldPrice, a.getPrice());
                             break;
                         case 2:
                         //Set Customer
