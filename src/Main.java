@@ -74,7 +74,7 @@ public class Main {
                     break;
                 case 3:
                     //History
-                    System.out.println("\nCOMPLETED ORDERS:");
+                    System.out.println("-----COMPLETED ORDERS-----");
                     pizzaBar.displayCompletedOrders();
                     break;
                 case 4:
@@ -88,6 +88,7 @@ public class Main {
                             break;
                         case 2:
                         //Set Customer
+                            input.nextLine();
                             System.out.println("Enter Customer Name:");
                             String name = input.nextLine();
                             System.out.println("Enter Customer Number:");
@@ -155,5 +156,6 @@ public class Main {
         System.out.println("3. History");
         System.out.println("4. ADMIN");
         System.out.println("5. Exit");
+        System.out.print(">>>");
     }
 }

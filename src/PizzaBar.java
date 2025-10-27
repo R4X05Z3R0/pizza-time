@@ -29,8 +29,17 @@ public class PizzaBar {
     }
 
     public void displayCompletedOrders(){
+        boolean found = false;
         for (OrderOverview ready : getCompletedOrders()){
-            System.out.println(ready);
+            if(!getCompletedOrders().isEmpty()) {
+                System.out.println(ready);
+                found = true;
+                break;
+            }
+            System.out.println("\n");
+        }
+        if (!found){
+            System.out.println("No History");
         }
     }
 
@@ -54,7 +63,7 @@ public class PizzaBar {
         System.out.println("\nORDER (" + a.getId() + "): READY");
     }
 
-    public boolean displayOrder() {
+    public void displayOrder() {
         System.out.println("------ALL ORDERS-----");
         boolean found = false;
 
@@ -66,10 +75,8 @@ public class PizzaBar {
         }
 
         if (!found) {
-            System.out.println("No Current Orders");
+            System.out.println("No Current Orders\n");
         }
-
-        return found;
     }
 
     public ArrayList<Customer> getCustomers(){
@@ -77,12 +84,22 @@ public class PizzaBar {
     }
 
     public void displayCustomers(){
-        for(Customer people : getCustomers()){
-            System.out.println(people);
+        boolean found = false;
+
+        for(Customer people : getCustomers()) {
+            if (!customers.isEmpty()) {
+                System.out.printf("Name: %s, Phone Number: %s%n", people.getName(), people.getPhoneNumber());
+                found = true;
+            }
+        }
+
+        if (!found){
+            System.out.println("NO REGISTERED CUSTOMERS\n");
         }
     }
 
     public void addCustomer(String name, String number) {
         customers.add(new Customer(name,number));
+        System.out.println("Customer Added!\n");
     }
 }
