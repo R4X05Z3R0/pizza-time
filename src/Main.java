@@ -69,7 +69,7 @@ public class Main {
                                 yesOrNo = false;
                                 break;
                             } else {
-                                System.out.println("Error: Please enter \" Yes\" or \" No\"");
+                                System.out.println("Error: Please enter \"Yes\" or \" No\"");
                             }
                         }
                     }
@@ -77,6 +77,8 @@ public class Main {
                     //Customer Information
                     Customer customer = addCustomer(input);
                     orderCount++;
+
+                    //Adds order to orderlist
 
                     OrderOverview overview = new OrderOverview(customer, order, orderCount);
                     pizzaBar.addOrder(overview);
@@ -93,11 +95,20 @@ public class Main {
                     int option1 = input.nextInt();
                     switch (option1) {
                         case 1:
-                            System.out.println("Select Order To Ready:");
-                            int orderID = input.nextInt();
-                            pizzaBar.setReady(orderID);
+                            while (true) {
+                                System.out.println("Select Order To Ready:");
+                                if (!input.hasNextInt()) {
+                                    System.out.println("Error: Enter Number");
+                                    input.next();
+                                } else {
+                                    int orderID = input.nextInt();
+                                    pizzaBar.setReady(orderID);
+                                    break;
+                                }
+                            }
+
                             //Function that sets order to ready and deletes it from list
-                            break;
+
                         case 2:
                             //Go back to Main Menu
                             System.out.println();

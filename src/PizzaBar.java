@@ -56,10 +56,15 @@ public class PizzaBar {
         return null;
     }
 
-    public void setReady(int orderID) {
+    public boolean setReady(int orderID) {
         OrderOverview a = findOrderbyID(orderID);
-        a.setCompleted();
-        System.out.println("\nORDER (" + a.getId() + ") READY");
+        if (a != null){
+            a.setCompleted();
+            System.out.println("\nORDER (" + a.getId() + ") READY");
+            return false;
+        };
+        System.out.println();
+        return true;
     }
 
     public void displayOrder() {
@@ -74,7 +79,7 @@ public class PizzaBar {
         }
 
         if (!found) {
-            System.out.println("No Current Orders\n");
+            System.out.println("No Current Orders");
         }
     }
 
