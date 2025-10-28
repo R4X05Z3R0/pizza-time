@@ -20,12 +20,14 @@ public class PizzaBar {
 
     public ArrayList<OrderOverview> getCompletedOrders() {
         //For loop for orders if completed
+        ArrayList<OrderOverview> completedOrders1 = new ArrayList<>();
+
         for (OrderOverview order : orders){
             if (order.isCompleted()){
-                completedOrders.add(order);
+                completedOrders1.add(order);
             }
         }
-        return completedOrders;
+        return completedOrders1;
     }
 
     public void displayCompletedOrders(){
@@ -34,12 +36,11 @@ public class PizzaBar {
             if(!getCompletedOrders().isEmpty()) {
                 System.out.println(ready);
                 found = true;
-                break;
             }
             System.out.println("\n");
         }
         if (!found){
-            System.out.println("No History");
+            System.out.println("No History\n");
         }
     }
 
@@ -60,7 +61,7 @@ public class PizzaBar {
     public void setReady(int orderID) {
         OrderOverview a = findOrderbyID(orderID);
         a.setCompleted();
-        System.out.println("\nORDER (" + a.getId() + "): READY");
+        System.out.println("\nORDER (" + a.getId() + ") READY");
     }
 
     public void displayOrder() {
