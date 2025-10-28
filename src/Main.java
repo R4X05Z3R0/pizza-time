@@ -11,7 +11,7 @@ public class Main {
         while (true) {
             mainMenu();
             int option = input.nextInt();
-            
+
             switch (option) {
                 case 1:
                     menu.displayMenu(); //Displays Menu
@@ -29,7 +29,6 @@ public class Main {
                         System.out.println("You selected:\n" + order);
 
 
-
                         System.out.println("Continue Order?");
                         String choose = input.next();
 
@@ -39,30 +38,30 @@ public class Main {
 
                     }
                     //Customer Information
-                    System.out.println("Insert Customer Name:");
-                    String cName = input.next();
-                    System.out.println("Insert Customer Number:");
-                    String cNumber = input.next();
+//                    System.out.println("Insert Customer Name:");
+//                    String cName = input.next();
+//                    System.out.println("Insert Customer Number:");
+//                    String cNumber = input.next();
+//
+//                    Customer customer = new Customer(cName, cNumber);
 
-                    Customer customer = new Customer(cName, cNumber);
-
+                    Customer customer = addCustomer(input);
                     orderCount++;
 
                     OrderOverview overview = new OrderOverview(customer, order, orderCount);
                     pizzaBar.addOrder(overview);
                     overview.displayOverview();
-
-
+                    
                     //Create function that takes order and customer name to array of completed orders
                     break;
-                    
-                    
+
+
                 case 2:
                     //Order List
                     pizzaBar.displayOrder();
                     subMenu();
                     int option1 = input.nextInt();
-                    switch (option1){
+                    switch (option1) {
                         case 1:
                             System.out.println("Select Order To Ready:");
                             int orderID = input.nextInt();
@@ -78,26 +77,26 @@ public class Main {
                             System.out.println("Invalid Choice. Try Again.");
                     }
                     break;
-                    
-                    
+
+
                 case 3:
                     //History
                     System.out.println("-----COMPLETED ORDERS-----");
                     pizzaBar.displayCompletedOrders();
                     break;
-                    
-                    
+
+
                 case 4:
                     //Admin
                     adminMenu();
                     int option2 = input.nextInt();
-                    switch (option2){
+                    switch (option2) {
                         case 1:
-                        //Change Price
+                            //Change Price
                             changePrice(input, menu);
                             break;
                         case 2:
-                        //Set Customer
+                            //Set Customer
                             input.nextLine();
                             System.out.println("Enter Customer Name:");
                             String name = input.nextLine();
@@ -118,16 +117,16 @@ public class Main {
                             System.out.println("Invalid Choice");
                     }
                     break;
-                    
-                    
+
+
                 case 5:
                     //Exit
                     System.out.println("Ending Program...");
                     input.close();
                     System.exit(0);
                     break;
-                    
-                    
+
+
                 default:
                     System.out.println("Invalid Option. Try again.");
 
@@ -141,7 +140,7 @@ public class Main {
         Pizza a = menu.findPizzaByID(pizzaID);
         double oldPrice = a.getPrice();
         System.out.println("You selected " + a.getName()
-        + " - " + a.getPrice() + "kr");
+                + " - " + a.getPrice() + "kr");
 
         System.out.println("Enter new amount: ");
         double newAmount = input.nextDouble();
@@ -175,5 +174,23 @@ public class Main {
         System.out.println("4. ADMIN");
         System.out.println("5. Exit");
         System.out.print(">>>");
+    }
+
+    public static Customer addCustomer(Scanner input) {
+        input.nextLine();
+        System.out.println("Enter Customer Name: ");
+        String name = input.next();
+        System.out.println("Enter Phone Number (8 digits): ");
+        String phone = input.next();
+        while (!isValidPhone(phone)) {
+            System.out.println("Invalid Phone Number. Try Again.");
+            System.out.println("Enter Phone Number (8 digits): ");
+            phone = input.next();
+        }
+        return new Customer(name,phone);
+    }
+
+    public static boolean isValidPhone(String phone) {
+        return phone != null && phone.matches("\\d{8}");
     }
 }
