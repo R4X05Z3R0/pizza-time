@@ -15,43 +15,62 @@ public class Main {
             switch (option) {
                 case 1:
                     menu.displayMenu(); //Displays Menu
+
                     boolean yesOrNo = true;
                     Order order = new Order();
-                    while (yesOrNo) {
-                        //Pizza Information and Amount
-                        System.out.println("Select Pizza: ");
-                        int id = input.nextInt();
-                        Pizza selectedPizza = menu.findPizzaByID(id); // Searches through list for Pizza
-                        System.out.println("You selected:\n" + selectedPizza + "\n");
-                        System.out.println("Insert Amount: ");
-                        int amount = input.nextInt();
-                        order.addLine(selectedPizza, amount);
-                        System.out.println("You selected:\n" + order);
 
+                    while (yesOrNo){
+                        int id = 0;
+                        while (true){
+                            System.out.println("Select Pizza (Enter ID) :");
+                            if (input.hasNextInt()){ //Checks if input is int before continuing
+                                id = input.nextInt();
+                                Pizza selectedPizza = menu.findPizzaByID(id);
+                                if (selectedPizza != null){//Checks if it exists at all
+                                    System.out.println("You have selected: " + selectedPizza.getName().toUpperCase() + "\n");
+                                    break;
+                                } else {
+                                    System.out.println("Pizza does not exist");
+                                }
+                            } else {
+                                System.out.println("Please Enter A Valid Number");
+                            }
 
-                        System.out.println("Continue Order?");
-                        String choose = input.next();
-
-                        if (choose.equalsIgnoreCase("no")) {
-                            yesOrNo = false;
                         }
 
-                    }
-                    //Customer Information
-//                    System.out.println("Insert Customer Name:");
-//                    String cName = input.next();
-//                    System.out.println("Insert Customer Number:");
-//                    String cNumber = input.next();
-//
-//                    Customer customer = new Customer(cName, cNumber);
+                        //Amount Verification
+                        int amount = 0;
+                        while (true) {
+                            System.out.println("Insert Amount: ");
+                            if (input.hasNext()) {
+                                amount = input.nextInt();
+                                if (amount > 0) {
+                                    //Just ends loop
+                                    break;
+                                } else {
+                                    System.out.println("Error: Amount must be greater than 0");
+                                }
+                            } else {
+                                System.out.println("Error: Enter a number");
+                            }
+                        }
 
+                        //Order Display
+                        Pizza selectedPizza = menu.findPizzaByID(id);
+                        order.addLine(selectedPizza,amount);
+                        System.out.println("You have selected: \n" + order);
+
+
+                    }
+
+                    //Customer Information
                     Customer customer = addCustomer(input);
                     orderCount++;
 
                     OrderOverview overview = new OrderOverview(customer, order, orderCount);
                     pizzaBar.addOrder(overview);
                     overview.displayOverview();
-                    
+
                     //Create function that takes order and customer name to array of completed orders
                     break;
 
