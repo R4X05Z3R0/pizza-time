@@ -11,6 +11,7 @@ public class Main {
         while (true) {
             mainMenu();
             int option = input.nextInt();
+            
             switch (option) {
                 case 1:
                     menu.displayMenu(); //Displays Menu
@@ -54,6 +55,8 @@ public class Main {
 
                     //Create function that takes order and customer name to array of completed orders
                     break;
+                    
+                    
                 case 2:
                     //Order List
                     pizzaBar.displayOrder();
@@ -70,13 +73,20 @@ public class Main {
                             //Go back to Main Menu
                             System.out.println();
                             break;
+                        default:
+                            //Invalid Choice
+                            System.out.println("Invalid Choice. Try Again.");
                     }
                     break;
+                    
+                    
                 case 3:
                     //History
                     System.out.println("-----COMPLETED ORDERS-----");
                     pizzaBar.displayCompletedOrders();
                     break;
+                    
+                    
                 case 4:
                     //Admin
                     adminMenu();
@@ -104,14 +114,20 @@ public class Main {
                             //Go back to main menu
                             System.out.println();
                             break;
+                        default:
+                            System.out.println("Invalid Choice");
                     }
                     break;
+                    
+                    
                 case 5:
                     //Exit
                     System.out.println("Ending Program...");
                     input.close();
                     System.exit(0);
                     break;
+                    
+                    
                 default:
                     System.out.println("Invalid Option. Try again.");
 
