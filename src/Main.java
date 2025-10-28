@@ -15,7 +15,6 @@ public class Main {
             switch (option) {
                 case 1:
                     menu.displayMenu(); //Displays Menu
-
                     boolean yesOrNo = true;
                     Order order = new Order();
 
@@ -60,7 +59,19 @@ public class Main {
                         order.addLine(selectedPizza,amount);
                         System.out.println("You have selected: \n" + order);
 
-
+                        //Continue confirmation
+                        while (true) {
+                            System.out.println("Continue order?");
+                            String choose = input.next();
+                            if (choose.equalsIgnoreCase("yes")){
+                                break;
+                            } else if (choose.equalsIgnoreCase("no")){
+                                yesOrNo = false;
+                                break;
+                            } else {
+                                System.out.println("Error: Please enter \" Yes\" or \" No\"");
+                            }
+                        }
                     }
 
                     //Customer Information
