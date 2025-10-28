@@ -141,12 +141,14 @@ public class Main {
         System.out.println("2. ADD FAVORITE CUSTOMERS");
         System.out.println("3. DISPLAY CUSTOMERS");
         System.out.println("4. MAIN MENU");
+        System.out.print(">>>");
     }
 
     private static void subMenu() {
         System.out.println("\nSelect An Option:");
         System.out.println("1. Ready Order");
         System.out.println("2. Go Back To Main Menu");
+        System.out.print(">>>");
     }
 
     private static void mainMenu() {

@@ -3,14 +3,12 @@ import java.util.ArrayList;
 
 public class PizzaBar {
     ArrayList<OrderOverview> orders;
-    ArrayList<OrderOverview> completedOrders;
     ArrayList<Customer> customers;
     Menu menu;
 
 
     public PizzaBar(Menu menu) {
         this.orders = new ArrayList<>();
-        this.completedOrders = new ArrayList<>();
         this.customers = new ArrayList<>();
         this.menu = menu;
     }
