@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class Order {
     ArrayList<OrderLine> lines;
-    boolean completed; //Remember to use flag to sort completed orders
 
     public Order(){
         this.lines = new ArrayList<>();

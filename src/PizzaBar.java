@@ -62,7 +62,7 @@ public class PizzaBar {
             a.setCompleted();
             System.out.println("\nORDER (" + a.getId() + ") READY");
             return false;
-        };
+        }
         return true;
     }
 
