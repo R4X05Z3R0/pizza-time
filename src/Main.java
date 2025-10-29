@@ -167,10 +167,21 @@ public class Main {
                         case 2:
                             //Set Customer
                             input.nextLine();
+                            String name;
+                            String number;
                             System.out.println("Enter Customer Name:");
-                            String name = input.nextLine();
-                            System.out.println("Enter Customer Number:");
-                            String number = input.nextLine();
+                            name = input.nextLine();
+
+                            while (true){
+                                System.out.println("Enter Customer Number:");
+                                number = input.nextLine();
+                                if (number.matches("\\d{8}")){
+                                    break;
+                                }else {
+                                    System.out.println("Error: Enter Number (8 Digits)\n");
+                                }
+                            }
+
                             pizzaBar.addCustomer(name, number);
                             break;
                         case 3:
