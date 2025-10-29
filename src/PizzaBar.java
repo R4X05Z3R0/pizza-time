@@ -63,7 +63,6 @@ public class PizzaBar {
             System.out.println("\nORDER (" + a.getId() + ") READY");
             return false;
         };
-        System.out.println();
         return true;
     }
 
@@ -79,7 +78,7 @@ public class PizzaBar {
         }
 
         if (!found) {
-            System.out.println("No Current Orders");
+            System.out.println("No Current Orders\n");
         }
     }
 

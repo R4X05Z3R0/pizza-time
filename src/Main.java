@@ -32,6 +32,7 @@ public class Main {
                                     System.out.println("Pizza does not exist");
                                 }
                             } else {
+                                input.next();
                                 System.out.println("Please Enter A Valid Number");
                             }
 
@@ -41,7 +42,7 @@ public class Main {
                         int amount = 0;
                         while (true) {
                             System.out.println("Insert Amount: ");
-                            if (input.hasNext()) {
+                            if (input.hasNextInt()) {
                                 amount = input.nextInt();
                                 if (amount > 0) {
                                     //Just ends loop
@@ -50,6 +51,7 @@ public class Main {
                                     System.out.println("Error: Amount must be greater than 0");
                                 }
                             } else {
+                                input.next();
                                 System.out.println("Error: Enter a number");
                             }
                         }
@@ -201,7 +203,7 @@ public class Main {
     }
 
     private static void subMenu() {
-        System.out.println("\nSelect An Option:");
+        System.out.println("Select An Option:");
         System.out.println("1. Ready Order");
         System.out.println("2. Go Back To Main Menu");
         System.out.print(">>>");
