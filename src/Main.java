@@ -10,8 +10,15 @@ public class Main {
 
         while (true) {
             mainMenu();
-            int option = input.nextInt();
+            int option;
 
+            if(input.hasNextInt()){
+            option = input.nextInt();
+            } else {
+                System.out.println("Error: Please Enter Valid Number");
+                input.next();
+                continue;
+            }
             switch (option) {
                 case 1:
                     menu.displayMenu(); //Displays Menu
@@ -93,8 +100,18 @@ public class Main {
                 case 2:
                     //Order List
                     pizzaBar.displayOrder();
-                    subMenu();
-                    int option1 = input.nextInt();
+
+                    int option1;
+                    while (true) {
+                        subMenu();
+                        if (input.hasNextInt()) {
+                            option1 = input.nextInt();
+                            break;
+                        } else {
+                            System.out.println("Error: Enter Number\n");
+                            input.next();
+                        }
+                    }
                     switch (option1) {
                         case 1:
                             while (true) {
@@ -131,8 +148,17 @@ public class Main {
 
                 case 4:
                     //Admin
-                    adminMenu();
-                    int option2 = input.nextInt();
+                    int option2;
+                    while (true) {
+                        adminMenu();
+                        if (input.hasNextInt()) {
+                            option2 = input.nextInt();
+                            break;
+                        } else {
+                            System.out.println("Error: Enter Number");
+                            input.next();
+                        }
+                    }
                     switch (option2) {
                         case 1:
                             //Change Price
@@ -171,26 +197,43 @@ public class Main {
 
 
                 default:
-                    System.out.println("Invalid Option. Try again.");
+                    System.out.println("Error: Invalid Option.");
 
             }
         }
     }
 
     private static void changePrice(Scanner input, Menu menu) {
-        System.out.println("Select pizza by ID:");
-        int pizzaID = input.nextInt();
+        int pizzaID;
+        while (true){
+            System.out.println("Select pizza by ID:");
+            if(input.hasNextInt()){
+                pizzaID = input.nextInt();
+                break;
+            } else {
+                System.out.println("Error: Enter Number");
+                input.next();
+            }
+        }
         Pizza a = menu.findPizzaByID(pizzaID);
         double oldPrice = a.getPrice();
         System.out.println("You selected " + a.getName()
                 + " - " + a.getPrice() + "kr");
 
-        System.out.println("Enter new amount: ");
-        double newAmount = input.nextDouble();
+        double newAmount = 0;
+        while(true) {
+            System.out.println("Enter new amount: ");
+            if (input.hasNextDouble()){
+                newAmount = input.nextDouble();
+                break;
+            } else {
+                System.out.println("Error: Enter A Number");
+                input.next();
+            }
+        }
         a.setPrice(newAmount);
 
         System.out.printf("%s : Old Price - %.2fkr , New Price - %.2fkr%n", a.getName(), oldPrice, a.getPrice());
-        return;
     }
 
     private static void adminMenu() {
