@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class Order {
     ArrayList<OrderLine> lines;
-    boolean completed; //Remember to use flag to sort completed orders
 
     public Order(){
         this.lines = new ArrayList<>();
@@ -18,6 +17,10 @@ public class Order {
             sum += line.getLineTotal();
         }
         return sum;
+    }
+
+    public ArrayList<OrderLine> getLines() {
+        return lines;
     }
 
     @Override

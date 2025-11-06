@@ -15,6 +15,10 @@ public class OrderLine {
         return pizza.getPrice() * getAmount();
     }
 
+    public String getItems(){
+        return String.format("%d x %s", getAmount(), pizza.getName());
+    }
+
     @Override
     public String toString() {
         return String.format("%d x %s : %.2fkr", getAmount(), pizza.getName(), getLineTotal());
