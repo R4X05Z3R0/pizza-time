@@ -56,10 +56,14 @@ public class PizzaBar {
         return null;
     }
 
-    public void setReady(int orderID) {
+    public boolean setReady(int orderID) {
         OrderOverview a = findOrderbyID(orderID);
-        a.setCompleted();
-        System.out.println("\nORDER (" + a.getId() + ") READY");
+        if (a != null){
+            a.setCompleted();
+            System.out.println("\nORDER (" + a.getId() + ") READY");
+            return false;
+        }
+        return true;
     }
 
     public void displayOrder() {
